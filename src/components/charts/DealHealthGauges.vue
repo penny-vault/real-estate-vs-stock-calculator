@@ -1,32 +1,35 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import VChart from 'vue-echarts'
 import type { YearResult } from '../../types/outputs'
 import type { Summary } from '../../types/outputs'
 
 const props = defineProps<{ yearResults: YearResult[]; summary: Summary }>()
 
-// Cap rate = NOI / property value (year 1)
+const selectedYear = ref(0)
+const row = computed(() => props.yearResults[selectedYear.value]!)
+
+// Cap rate = NOI / property value
 const capRate = computed(() => {
-  const r = props.yearResults[0]
+  const r = row.value
   return r ? (r.noi / r.propertyValue) * 100 : 0
 })
 
 // Debt service coverage ratio = NOI / annual mortgage
 const dscr = computed(() => {
-  const r = props.yearResults[0]
+  const r = row.value
   return r ? r.noi / r.mortgagePayment : 0
 })
 
-// Cash on cash return (year 1)
+// Cash on cash return
 const coc = computed(() => {
-  const r = props.yearResults[0]
+  const r = row.value
   return r ? r.cashOnCashReturn : 0
 })
 
 // Gross rent multiplier = price / annual gross rent
 const grm = computed(() => {
-  const r = props.yearResults[0]
+  const r = row.value
   return r ? r.propertyValue / r.grossRent : 0
 })
 
@@ -125,9 +128,14 @@ const grmRating = computed(() => rateValue(grm.value, [[10, 'Great'], [15, 'Good
 
 <template>
   <div class="card overflow-hidden">
-    <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-sm font-semibold text-text-primary">Deal Health (Year 1)</h3>
-      <p class="text-[11px] text-text-muted mt-0.5">Key investment metrics at a glance</p>
+    <div class="flex items-center justify-between px-4 py-3 border-b border-card-border">
+      <div>
+        <h3 class="text-sm font-semibold text-text-primary">Deal Health</h3>
+        <p class="text-[11px] text-text-muted mt-0.5">Key investment metrics at a glance</p>
+      </div>
+      <select v-model="selectedYear" class="input-field w-auto py-1 px-2 text-[11px]">
+        <option v-for="(r, i) in yearResults" :key="r.year" :value="i">Year {{ r.year }}</option>
+      </select>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4">
       <div class="border-r border-b lg:border-b-0 border-card-border">
