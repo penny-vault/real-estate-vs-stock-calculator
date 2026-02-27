@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'GeistMono', 'SF Mono', 'Roboto Mono', ui-monospace, monospace;
+
+  --color-rental: #e5953e;
+  --color-rental-dim: #e5953e33;
+  --color-index: #3b82f6;
+  --color-index-dim: #3b82f633;
+  --color-positive: #22c55e;
+  --color-negative: #ef4444;
+
+  --color-bg: #09090b;
+  --color-card: #111113;
+  --color-card-border: #1c1c1f;
+  --color-card-hover: #18181b;
+  --color-input-bg: #0c0c0e;
+  --color-input-border: #27272a;
+  --color-input-focus: #3f3f46;
+
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #52525b;
+  --color-text-muted: #3f3f46;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-card-border);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-input-border);
+  }
+}
+
+@layer components {
+  .card {
+    background: var(--color-card);
+    border: 1px solid var(--color-card-border);
+    border-radius: 8px;
+  }
+
+  .input-field {
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    border-radius: 6px;
+    padding: 7px 10px;
+    color: var(--color-text-primary);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.15s ease;
+    width: 100%;
+    outline: none;
+  }
+
+  .input-field:focus {
+    border-color: var(--color-input-focus);
+  }
+
+  .input-field:hover:not(:focus) {
+    border-color: #333336;
+  }
+
+  .input-field::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--color-card-border);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+    cursor: pointer;
+  }
+
+  .btn-ghost:hover {
+    background: var(--color-card);
+    border-color: var(--color-input-border);
+    color: var(--color-text-primary);
+  }
+
+  .btn-ghost.active {
+    background: var(--color-input-border);
+    border-color: var(--color-input-focus);
+    color: var(--color-text-primary);
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-in {
+    animation: fade-in-up 0.35s ease-out both;
+  }
+}
