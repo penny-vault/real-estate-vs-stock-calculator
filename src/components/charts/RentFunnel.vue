@@ -85,8 +85,8 @@ const option = computed(() => {
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border flex items-center justify-between">
       <div>
-        <h3 class="text-[12px] font-medium text-text-primary">Income Funnel</h3>
-        <p class="text-[10px] text-text-muted mt-0.5">How gross rent narrows to net cash flow</p>
+        <h3 class="text-sm font-semibold text-text-primary">Income Funnel</h3>
+        <p class="text-[11px] text-text-muted mt-0.5">How gross rent narrows to net cash flow</p>
       </div>
       <select v-model="selectedYear" class="input-field w-auto py-1 px-2 text-[11px]">
         <option v-for="(r, i) in yearResults" :key="r.year" :value="i">Year {{ r.year }}</option>

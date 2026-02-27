@@ -111,15 +111,15 @@ const option = computed(() => {
     <div class="px-4 py-3 border-b border-card-border">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <h3 class="text-[12px] font-medium text-text-primary">Sensitivity Analysis</h3>
-          <p class="text-[10px] text-text-muted mt-1 max-w-lg leading-relaxed">
+          <h3 class="text-sm font-semibold text-text-primary">Sensitivity Analysis</h3>
+          <p class="text-[11px] text-text-muted mt-1 max-w-lg leading-relaxed">
             {{ tabs[heatmapIndex].description }}
           </p>
         </div>
         <div class="flex gap-1 shrink-0">
           <button
             v-for="(tab, i) in tabs" :key="i"
-            class="text-[10px] px-2.5 py-1.5 rounded transition-colors whitespace-nowrap"
+            class="text-[11px] px-2.5 py-1.5 rounded transition-colors whitespace-nowrap"
             :class="heatmapIndex === i ? 'bg-input-border text-text-primary' : 'text-text-muted hover:text-text-secondary'"
             @click="heatmapIndex = i"
           >{{ tab.label }}</button>
@@ -129,7 +129,7 @@ const option = computed(() => {
     <div class="p-3">
       <VChart :option="option" autoresize style="height: 340px" />
     </div>
-    <div class="px-4 py-2 border-t border-card-border flex items-center justify-center gap-6 text-[10px] text-text-muted">
+    <div class="px-4 py-2 border-t border-card-border flex items-center justify-center gap-6 text-[11px] text-text-muted">
       <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm" style="background:#15803d"></span> Rental wins</span>
       <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm" style="background:#27272a"></span> Break-even</span>
       <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm" style="background:#991b1b"></span> Stocks win</span>

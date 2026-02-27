@@ -121,15 +121,15 @@ const option = computed(() => {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Total Cost Breakdown</h3>
-      <p class="text-[10px] text-text-muted mt-0.5">
+      <h3 class="text-sm font-semibold text-text-primary">Total Cost Breakdown</h3>
+      <p class="text-[11px] text-text-muted mt-0.5">
         Every dollar spent over {{ yearResults.length }} years, sized by magnitude
       </p>
     </div>
     <div class="p-3">
       <VChart :option="option" autoresize style="height: 320px" />
     </div>
-    <div class="px-4 py-2 border-t border-card-border flex items-center justify-center gap-6 text-[10px] text-text-muted">
+    <div class="px-4 py-2 border-t border-card-border flex items-center justify-center gap-6 text-[11px] text-text-muted">
       <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm" style="background:#1d4ed8"></span> Builds equity</span>
       <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm" style="background:#b91c1c"></span> Pure cost</span>
     </div>

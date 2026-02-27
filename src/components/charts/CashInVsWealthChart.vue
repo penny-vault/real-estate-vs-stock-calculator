@@ -136,8 +136,8 @@ const option = computed(() => {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Capital Efficiency</h3>
-      <p class="text-[10px] text-text-muted mt-0.5">Cash invested (dim) vs profit generated (bright), with wealth multiplier labels. Rental uses leverage to amplify returns.</p>
+      <h3 class="text-sm font-semibold text-text-primary">Capital Efficiency</h3>
+      <p class="text-[11px] text-text-muted mt-0.5">Cash invested (dim) vs profit generated (bright), with wealth multiplier labels. Rental uses leverage to amplify returns.</p>
     </div>
     <div class="p-3">
       <VChart :option="option" autoresize style="height: 300px" />

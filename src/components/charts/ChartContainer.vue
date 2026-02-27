@@ -7,7 +7,7 @@ defineProps<{
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">{{ title }}</h3>
+      <h3 class="text-sm font-semibold text-text-primary">{{ title }}</h3>
     </div>
     <div class="p-3">
       <slot />

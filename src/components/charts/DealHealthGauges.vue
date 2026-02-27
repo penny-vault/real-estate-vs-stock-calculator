@@ -126,8 +126,8 @@ const grmRating = computed(() => rateValue(grm.value, [[10, 'Great'], [15, 'Good
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Deal Health (Year 1)</h3>
-      <p class="text-[10px] text-text-muted mt-0.5">Key investment metrics at a glance</p>
+      <h3 class="text-sm font-semibold text-text-primary">Deal Health (Year 1)</h3>
+      <p class="text-[11px] text-text-muted mt-0.5">Key investment metrics at a glance</p>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4">
       <div class="border-r border-b lg:border-b-0 border-card-border">
@@ -135,8 +135,8 @@ const grmRating = computed(() => rateValue(grm.value, [[10, 'Great'], [15, 'Good
           <VChart :option="capRateOption" autoresize style="height: 140px" />
         </div>
         <div class="px-3 pb-3 text-center">
-          <span class="text-[10px] font-semibold" :style="{ color: capRateRating.color }">{{ capRateRating.label }}</span>
-          <p class="text-[9px] text-text-muted mt-0.5 leading-tight">NOI as % of property value. Above 5% is typically solid for residential.</p>
+          <span class="text-[11px] font-semibold" :style="{ color: capRateRating.color }">{{ capRateRating.label }}</span>
+          <p class="text-[11px] text-text-muted mt-0.5 leading-tight">NOI as % of property value. Above 5% is typically solid for residential.</p>
         </div>
       </div>
       <div class="border-b lg:border-b-0 lg:border-r border-card-border">
@@ -144,8 +144,8 @@ const grmRating = computed(() => rateValue(grm.value, [[10, 'Great'], [15, 'Good
           <VChart :option="dscrOption" autoresize style="height: 140px" />
         </div>
         <div class="px-3 pb-3 text-center">
-          <span class="text-[10px] font-semibold" :style="{ color: dscrRating.color }">{{ dscrRating.label }}</span>
-          <p class="text-[9px] text-text-muted mt-0.5 leading-tight">Can income cover the mortgage? Above 1.25x means comfortable margin.</p>
+          <span class="text-[11px] font-semibold" :style="{ color: dscrRating.color }">{{ dscrRating.label }}</span>
+          <p class="text-[11px] text-text-muted mt-0.5 leading-tight">Can income cover the mortgage? Above 1.25x means comfortable margin.</p>
         </div>
       </div>
       <div class="border-r border-card-border">
@@ -153,8 +153,8 @@ const grmRating = computed(() => rateValue(grm.value, [[10, 'Great'], [15, 'Good
           <VChart :option="cocOption" autoresize style="height: 140px" />
         </div>
         <div class="px-3 pb-3 text-center">
-          <span class="text-[10px] font-semibold" :style="{ color: cocRating.color }">{{ cocRating.label }}</span>
-          <p class="text-[9px] text-text-muted mt-0.5 leading-tight">Annual cash flow divided by total cash invested. 8%+ is strong.</p>
+          <span class="text-[11px] font-semibold" :style="{ color: cocRating.color }">{{ cocRating.label }}</span>
+          <p class="text-[11px] text-text-muted mt-0.5 leading-tight">Annual cash flow divided by total cash invested. 8%+ is strong.</p>
         </div>
       </div>
       <div>
@@ -162,8 +162,8 @@ const grmRating = computed(() => rateValue(grm.value, [[10, 'Great'], [15, 'Good
           <VChart :option="grmOption" autoresize style="height: 140px" />
         </div>
         <div class="px-3 pb-3 text-center">
-          <span class="text-[10px] font-semibold" :style="{ color: grmRating.color }">{{ grmRating.label }}</span>
-          <p class="text-[9px] text-text-muted mt-0.5 leading-tight">Years of gross rent to equal price. Lower is better -- under 15 is solid.</p>
+          <span class="text-[11px] font-semibold" :style="{ color: grmRating.color }">{{ grmRating.label }}</span>
+          <p class="text-[11px] text-text-muted mt-0.5 leading-tight">Years of gross rent to equal price. Lower is better -- under 15 is solid.</p>
         </div>
       </div>
     </div>

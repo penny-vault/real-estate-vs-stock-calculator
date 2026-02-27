@@ -53,7 +53,7 @@ const cards = computed(() => [
       class="card px-4 py-3.5 animate-in"
       :style="{ animationDelay: `${i * 50}ms` }"
     >
-      <div class="text-[10px] font-medium text-text-muted uppercase tracking-wider mb-1.5">{{ c.label }}</div>
+      <div class="text-[11px] font-medium text-text-muted uppercase tracking-wider mb-1.5">{{ c.label }}</div>
       <div
         class="text-lg font-semibold tracking-tight"
         :class="[c.color || 'text-text-primary', c.mono ? 'font-mono' : '']"

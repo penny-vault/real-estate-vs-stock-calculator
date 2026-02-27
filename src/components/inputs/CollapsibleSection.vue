@@ -17,7 +17,7 @@ const isOpen = ref(props.defaultOpen)
       class="w-full flex items-center justify-between px-4 py-3 text-left"
       @click="isOpen = !isOpen"
     >
-      <h3 class="text-[12px] font-medium text-text-primary">{{ title }}</h3>
+      <h3 class="text-sm font-semibold text-text-primary">{{ title }}</h3>
       <svg
         class="w-3.5 h-3.5 text-text-muted transition-transform duration-200"
         :class="{ 'rotate-180': isOpen }"

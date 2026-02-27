@@ -109,8 +109,8 @@ const option = computed(() => {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Break-Even Analysis</h3>
-      <p class="text-[10px] text-text-muted mt-0.5">
+      <h3 class="text-sm font-semibold text-text-primary">Break-Even Analysis</h3>
+      <p class="text-[11px] text-text-muted mt-0.5">
         <template v-if="crossoverYear !== null">Rental surpasses stock portfolio at year {{ crossoverYear }}</template>
         <template v-else>Rental does not surpass stock portfolio within the holding period</template>
       </p>

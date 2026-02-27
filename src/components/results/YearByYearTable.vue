@@ -15,19 +15,19 @@ function toggleYear(year: number) {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Year-by-Year</h3>
+      <h3 class="text-sm font-semibold text-text-primary">Year-by-Year</h3>
     </div>
     <div class="overflow-x-auto">
       <table class="w-full text-[12px]">
         <thead>
           <tr class="border-b border-card-border">
-            <th class="text-left px-3 py-2.5 text-text-muted font-medium text-[10px] uppercase tracking-wider">Yr</th>
-            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[10px] uppercase tracking-wider">Value</th>
-            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[10px] uppercase tracking-wider">Equity</th>
-            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[10px] uppercase tracking-wider">Cash Flow</th>
-            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[10px] uppercase tracking-wider">CoC</th>
-            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[10px] uppercase tracking-wider">Rental</th>
-            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[10px] uppercase tracking-wider">Stock</th>
+            <th class="text-left px-3 py-2.5 text-text-muted font-medium text-[11px] uppercase tracking-wider">Yr</th>
+            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[11px] uppercase tracking-wider">Value</th>
+            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[11px] uppercase tracking-wider">Equity</th>
+            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[11px] uppercase tracking-wider">Cash Flow</th>
+            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[11px] uppercase tracking-wider">CoC</th>
+            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[11px] uppercase tracking-wider">Rental</th>
+            <th class="text-right px-3 py-2.5 text-text-muted font-medium text-[11px] uppercase tracking-wider">Stock</th>
             <th class="w-6 px-1"></th>
           </tr>
         </thead>

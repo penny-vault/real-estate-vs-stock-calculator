@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import VChart from 'vue-echarts'
 import type { AllInputs } from '../../types/inputs'
 import { runFullCalculation } from '../../engine/summary'
-import { formatPercent } from '../../utils/formatters'
+import { formatPercent, formatCurrency } from '../../utils/formatters'
 
 const RENTAL = '#e5953e'
 const INDEX = '#3b82f6'
@@ -27,6 +27,23 @@ const chartData = computed(() => {
       stockCAGR: result.summary.indexFundCAGR,
     }
   })
+})
+
+// Find where rental CAGR crosses below stock CAGR
+const crossoverPoint = computed(() => {
+  const data = chartData.value
+  for (let i = 0; i < data.length; i++) {
+    if (data[i]!.rentalCAGR < data[i]!.stockCAGR) {
+      return data[i]!.downPayment
+    }
+  }
+  return null
+})
+
+// Current down payment from inputs
+const currentDp = computed(() => props.inputs.property.downPaymentPercent)
+const currentData = computed(() => {
+  return chartData.value.find(d => d.downPayment === Math.round(currentDp.value))
 })
 
 const option = computed(() => {
@@ -99,11 +116,35 @@ const option = computed(() => {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Leverage Impact</h3>
-      <p class="text-[10px] text-text-muted mt-0.5">How down payment % affects annualized returns via leverage</p>
+      <h3 class="text-sm font-semibold text-text-primary">Leverage Impact</h3>
+      <p class="text-[11px] text-text-muted mt-0.5">
+        A smaller down payment means you borrow more, amplifying returns through leverage.
+        The orange line shows how rental CAGR changes at different down payment levels;
+        the blue dashed line is the stock alternative (unaffected by leverage).
+      </p>
     </div>
     <div class="p-3">
       <VChart :option="option" autoresize style="height: 280px" />
+    </div>
+    <div class="px-4 py-2.5 border-t border-card-border space-y-1.5">
+      <p v-if="crossoverPoint" class="text-[11px] text-text-muted leading-relaxed">
+        <span class="text-text-secondary font-medium">Crossover at ~{{ crossoverPoint }}% down:</span>
+        Above this, stocks beat rental on annualized returns. Below, leverage makes rental win.
+      </p>
+      <p v-else class="text-[11px] text-text-muted leading-relaxed">
+        <span class="text-text-secondary font-medium">Rental beats stocks at every down payment level</span> in this scenario.
+        Leverage amplifies an already strong deal.
+      </p>
+      <p v-if="currentData" class="text-[11px] text-text-muted leading-relaxed">
+        <span class="text-text-secondary font-medium">Your current {{ currentDp }}% down:</span>
+        Rental CAGR {{ formatPercent(currentData.rentalCAGR) }}
+        vs Stock CAGR {{ formatPercent(currentData.stockCAGR) }}
+        --
+        <span :class="currentData.rentalCAGR > currentData.stockCAGR ? 'text-green-400' : 'text-red-400'" class="font-medium">
+          {{ currentData.rentalCAGR > currentData.stockCAGR ? 'rental wins' : 'stocks win' }}
+          by {{ formatPercent(Math.abs(currentData.rentalCAGR - currentData.stockCAGR)) }}/yr
+        </span>
+      </p>
     </div>
   </div>
 </template>

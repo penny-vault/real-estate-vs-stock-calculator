@@ -117,8 +117,8 @@ const option = computed(() => {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Property Equity Buildup</h3>
-      <p class="text-[10px] text-text-muted mt-0.5">
+      <h3 class="text-sm font-semibold text-text-primary">Property Equity Buildup</h3>
+      <p class="text-[11px] text-text-muted mt-0.5">
         <span style="color:#e5953e">Property value</span> rises,
         <span style="color:#ef4444">loan balance</span> falls --
         the <span style="color:#22c55e">green area</span> is your equity
@@ -132,19 +132,19 @@ const option = computed(() => {
     <!-- Summary strip -->
     <div class="border-t border-card-border px-4 py-3 grid grid-cols-2 sm:grid-cols-4 gap-4">
       <div>
-        <div class="text-[10px] text-text-muted uppercase tracking-wider mb-0.5">Final Equity</div>
+        <div class="text-[11px] text-text-muted uppercase tracking-wider mb-0.5">Final Equity</div>
         <div class="text-sm font-semibold font-mono text-positive">{{ formatCurrency(totals.endEquity) }}</div>
       </div>
       <div>
-        <div class="text-[10px] text-text-muted uppercase tracking-wider mb-0.5">Principal Paid</div>
+        <div class="text-[11px] text-text-muted uppercase tracking-wider mb-0.5">Principal Paid</div>
         <div class="text-sm font-semibold font-mono text-text-secondary">{{ formatCurrency(totals.totalPrincipal) }}</div>
       </div>
       <div>
-        <div class="text-[10px] text-text-muted uppercase tracking-wider mb-0.5">Interest Paid</div>
+        <div class="text-[11px] text-text-muted uppercase tracking-wider mb-0.5">Interest Paid</div>
         <div class="text-sm font-semibold font-mono text-negative">{{ formatCurrency(totals.totalInterest) }}</div>
       </div>
       <div>
-        <div class="text-[10px] text-text-muted uppercase tracking-wider mb-0.5">Total Expenses</div>
+        <div class="text-[11px] text-text-muted uppercase tracking-wider mb-0.5">Total Expenses</div>
         <div class="text-sm font-semibold font-mono text-negative">{{ formatCurrency(totals.totalExpenses) }}</div>
       </div>
     </div>

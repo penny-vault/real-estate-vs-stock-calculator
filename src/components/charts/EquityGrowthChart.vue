@@ -182,8 +182,8 @@ const option = computed(() => {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Total Wealth Over Time</h3>
-      <p class="text-[10px] text-text-muted mt-0.5">Shaded bands show 90% confidence interval</p>
+      <h3 class="text-sm font-semibold text-text-primary">Total Wealth Over Time</h3>
+      <p class="text-[11px] text-text-muted mt-0.5">Shaded bands show 90% confidence interval</p>
     </div>
     <div class="p-3">
       <VChart :option="option" autoresize style="height: 300px" />

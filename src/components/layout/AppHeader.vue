@@ -10,7 +10,7 @@
           <path stroke-linecap="round" d="M2 20h20" opacity="0.3" />
         </svg>
         <span class="text-sm font-medium text-text-primary tracking-tight">Rental vs. Stock Portfolio</span>
-        <span class="text-[10px] text-text-muted font-mono ml-1 hidden sm:inline">calculator</span>
+        <span class="text-[11px] text-text-muted font-mono ml-1 hidden sm:inline">calculator</span>
       </div>
     </div>
   </header>

@@ -104,7 +104,7 @@ const option = computed(() => {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border flex items-center justify-between">
-      <h3 class="text-[12px] font-medium text-text-primary">Annual Cash Flow</h3>
+      <h3 class="text-sm font-semibold text-text-primary">Annual Cash Flow</h3>
       <select v-model="selectedYear" class="input-field w-auto py-1 px-2 text-[11px]">
         <option v-for="(r, i) in yearResults" :key="r.year" :value="i">Yr {{ r.year }}</option>
       </select>

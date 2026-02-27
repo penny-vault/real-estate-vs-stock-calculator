@@ -77,7 +77,7 @@ const option = computed(() => {
     <VChart :option="option" autoresize style="height: 320px" />
     <div class="grid grid-cols-2 gap-4 mt-3 px-1">
       <div class="space-y-1.5">
-        <div class="text-[10px] font-medium text-rental uppercase tracking-wider">Rental</div>
+        <div class="text-[11px] font-medium text-rental uppercase tracking-wider">Rental</div>
         <div class="grid grid-cols-2 gap-x-4 gap-y-0.5 text-[11px] font-mono">
           <span class="text-text-muted">Mean</span><span class="text-text-secondary">{{ formatCompact(result.rentalMean) }}</span>
           <span class="text-text-muted">Median</span><span class="text-text-secondary">{{ formatCompact(result.rentalMedian) }}</span>
@@ -86,7 +86,7 @@ const option = computed(() => {
         </div>
       </div>
       <div class="space-y-1.5">
-        <div class="text-[10px] font-medium text-index uppercase tracking-wider">Stock Portfolio</div>
+        <div class="text-[11px] font-medium text-index uppercase tracking-wider">Stock Portfolio</div>
         <div class="grid grid-cols-2 gap-x-4 gap-y-0.5 text-[11px] font-mono">
           <span class="text-text-muted">Mean</span><span class="text-text-secondary">{{ formatCompact(result.indexMean) }}</span>
           <span class="text-text-muted">Median</span><span class="text-text-secondary">{{ formatCompact(result.indexMedian) }}</span>

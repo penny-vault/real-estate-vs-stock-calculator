@@ -121,8 +121,8 @@ const option = computed(() => {
 <template>
   <div class="card overflow-hidden">
     <div class="px-4 py-3 border-b border-card-border">
-      <h3 class="text-[12px] font-medium text-text-primary">Annual Tax Impact</h3>
-      <p class="text-[10px] text-text-muted mt-0.5">
+      <h3 class="text-sm font-semibold text-text-primary">Annual Tax Impact</h3>
+      <p class="text-[11px] text-text-muted mt-0.5">
         Rental properties generate tax deductions (depreciation, mortgage interest) early on, but may owe taxes as income grows. Stocks pay dividend taxes every year.
       </p>
     </div>
@@ -131,19 +131,19 @@ const option = computed(() => {
     </div>
     <div class="px-4 py-2.5 border-t border-card-border grid grid-cols-3 gap-4 text-center">
       <div>
-        <p class="text-[9px] text-text-muted uppercase tracking-wider">Rental Net Tax</p>
+        <p class="text-[11px] text-text-muted uppercase tracking-wider">Rental Net Tax</p>
         <p class="text-[13px] font-semibold font-mono mt-0.5" :class="totals.rentalTotal >= 0 ? 'text-green-400' : 'text-red-400'">
           {{ totals.rentalTotal >= 0 ? 'Saved' : 'Paid' }} {{ formatCurrency(Math.abs(totals.rentalTotal)) }}
         </p>
       </div>
       <div>
-        <p class="text-[9px] text-text-muted uppercase tracking-wider">Stock Tax Paid</p>
+        <p class="text-[11px] text-text-muted uppercase tracking-wider">Stock Tax Paid</p>
         <p class="text-[13px] font-semibold font-mono mt-0.5 text-red-400">
           {{ formatCurrency(Math.abs(totals.stockTotal)) }}
         </p>
       </div>
       <div>
-        <p class="text-[9px] text-text-muted uppercase tracking-wider">Rental Advantage</p>
+        <p class="text-[11px] text-text-muted uppercase tracking-wider">Rental Advantage</p>
         <p class="text-[13px] font-semibold font-mono mt-0.5" :class="totals.netAdvantage >= 0 ? 'text-green-400' : 'text-red-400'">
           {{ formatCurrency(Math.abs(totals.netAdvantage)) }}
         </p>
