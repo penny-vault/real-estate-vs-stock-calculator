@@ -36,10 +36,6 @@ defineProps<{
   <div class="space-y-3">
     <SummaryCards :summary="output.summary" />
 
-    <div class="flex justify-end">
-      <CsvExportButton :year-results="output.yearResults" />
-    </div>
-
     <!-- Deal health gauges -->
     <DealHealthGauges :year-results="output.yearResults" :summary="output.summary" />
 
@@ -102,6 +98,10 @@ defineProps<{
       </ChartContainer>
     </template>
 
-    <YearByYearTable :year-results="output.yearResults" />
+    <YearByYearTable :year-results="output.yearResults">
+      <template #header-actions>
+        <CsvExportButton :year-results="output.yearResults" />
+      </template>
+    </YearByYearTable>
   </div>
 </template>

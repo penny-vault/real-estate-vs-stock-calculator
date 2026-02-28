@@ -154,7 +154,7 @@ export function runMonteCarloSimulation(params: MonteCarloWorkerInputs): MonteCa
       cumulativeCashFlow += afterTaxCF
 
       // Index fund
-      indexValue = indexValue * (1 + idxReturn)
+      indexValue = indexValue * (1 + netIdxReturn)
       if (afterTaxCF < 0) {
         indexValue += Math.abs(afterTaxCF)
       }

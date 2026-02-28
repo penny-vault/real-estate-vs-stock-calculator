@@ -31,6 +31,7 @@ function onInput(e: Event) {
         class="input-field pr-6"
         :value="modelValue"
         @input="onInput"
+        @focus="(e: FocusEvent) => (e.target as HTMLInputElement).select()"
       />
       <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-text-muted text-xs pointer-events-none">%</span>
     </div>

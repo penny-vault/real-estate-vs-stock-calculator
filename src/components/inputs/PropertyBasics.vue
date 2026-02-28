@@ -1,11 +1,18 @@
 <script setup lang="ts">
+import { inject, type Ref } from 'vue'
 import type { AllInputs } from '../../types/inputs'
 import { PROPERTY_LABELS, RENTAL_INCOME_LABELS } from '../../constants/labels'
 import CurrencyInput from './fields/CurrencyInput.vue'
 import PercentInput from './fields/PercentInput.vue'
 import NumberInput from './fields/NumberInput.vue'
 
-defineProps<{ inputs: AllInputs }>()
+const props = defineProps<{ inputs: AllInputs }>()
+const arvOverridden = inject<Ref<boolean>>('arvOverridden')!
+
+function onArvInput(value: number) {
+  arvOverridden.value = true
+  props.inputs.property.afterRepairValue = value
+}
 </script>
 
 <template>
@@ -16,9 +23,10 @@ defineProps<{ inputs: AllInputs }>()
       :tooltip="PROPERTY_LABELS.purchasePrice.tooltip"
     />
     <CurrencyInput
-      v-model="inputs.property.afterRepairValue"
+      :model-value="inputs.property.afterRepairValue"
       :label="PROPERTY_LABELS.afterRepairValue.label"
       :tooltip="PROPERTY_LABELS.afterRepairValue.tooltip"
+      @update:model-value="onArvInput"
     />
     <PercentInput
       v-model="inputs.property.downPaymentPercent"

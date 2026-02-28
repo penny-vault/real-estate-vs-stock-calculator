@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, provide, onMounted, onUnmounted } from 'vue'
 import AppHeader from './components/layout/AppHeader.vue'
 import PageLayout from './components/layout/PageLayout.vue'
 import InputPanel from './components/inputs/InputPanel.vue'
@@ -10,7 +10,8 @@ import { useCalculator } from './composables/useCalculator'
 import { useMonteCarlo } from './composables/useMonteCarlo'
 import type { PresetName } from './types/inputs'
 
-const { inputs, applyPreset, reset } = useInputs()
+const { inputs, arvOverridden, applyPreset, reset } = useInputs()
+provide('arvOverridden', arvOverridden)
 const { output } = useCalculator(inputs)
 const { result: monteCarloResult, loading: monteCarloLoading } = useMonteCarlo(inputs)
 

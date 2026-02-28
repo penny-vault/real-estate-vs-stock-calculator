@@ -14,8 +14,9 @@ function toggleYear(year: number) {
 
 <template>
   <div class="card overflow-hidden">
-    <div class="px-4 py-3 border-b border-card-border">
+    <div class="px-4 py-3 border-b border-card-border flex items-center justify-between">
       <h3 class="text-sm font-semibold text-text-primary">Year-by-Year</h3>
+      <slot name="header-actions" />
     </div>
     <div class="overflow-x-auto">
       <table class="w-full text-[12px]">

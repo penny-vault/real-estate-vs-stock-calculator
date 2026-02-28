@@ -39,7 +39,7 @@ function displayVal(): string {
         class="input-field pl-6"
         :value="displayVal()"
         @input="onInput"
-        @focus="focused = true"
+        @focus="(e) => { focused = true; (e.target as HTMLInputElement).select() }"
         @blur="focused = false"
       />
     </div>

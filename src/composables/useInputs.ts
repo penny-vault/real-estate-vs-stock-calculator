@@ -1,4 +1,4 @@
-import { reactive, watch } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import type { AllInputs, PresetName } from '../types/inputs'
 import { DEFAULT_INPUTS, PRESETS } from '../constants/defaults'
 
@@ -34,9 +34,22 @@ export function useInputs() {
     saveToStorage(val as AllInputs)
   }, { deep: true })
 
+  // ARV auto-sync: ARV = purchasePrice + repairCosts until the user manually edits it
+  const arvOverridden = ref(false)
+
+  watch(
+    () => [inputs.property.purchasePrice, inputs.property.repairCosts],
+    ([price, repair]) => {
+      if (!arvOverridden.value) {
+        inputs.property.afterRepairValue = price + repair
+      }
+    },
+  )
+
   function applyPreset(name: PresetName) {
     const preset = PRESETS[name]
     if (!preset) return
+    arvOverridden.value = false
     const base = deepClone(DEFAULT_INPUTS)
     // Merge preset over defaults
     for (const key of Object.keys(preset) as (keyof AllInputs)[]) {
@@ -52,11 +65,13 @@ export function useInputs() {
   }
 
   function reset() {
+    arvOverridden.value = false
     Object.assign(inputs, deepClone(DEFAULT_INPUTS))
   }
 
   return {
     inputs,
+    arvOverridden,
     applyPreset,
     reset,
   }

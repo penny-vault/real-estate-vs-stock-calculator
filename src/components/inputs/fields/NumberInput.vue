@@ -32,6 +32,7 @@ function onInput(e: Event) {
         :class="{ 'pr-10': suffix }"
         :value="modelValue"
         @input="onInput"
+        @focus="(e: FocusEvent) => (e.target as HTMLInputElement).select()"
       />
       <span v-if="suffix" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-text-muted text-[11px] pointer-events-none">{{ suffix }}</span>
     </div>
