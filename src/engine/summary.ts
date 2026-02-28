@@ -2,7 +2,7 @@ import type { AllInputs } from '../types/inputs'
 import type { YearResult, Summary, CalculatorOutput } from '../types/outputs'
 import { generateAmortization, getYearEndBalance, getAnnualMortgage } from './amortization'
 import { propertyValue } from './appreciation'
-import { annualDepreciation, cumulativeDepreciation } from './depreciation'
+import { depreciationForYear, cumulativeDepreciation } from './depreciation'
 import { calcAnnualCashFlow } from './cashFlow'
 import { calcTaxBenefit } from './taxBenefit'
 import { calcIndexFundGrowth } from './indexFund'
@@ -27,8 +27,7 @@ export function runFullCalculation(inputs: AllInputs): CalculatorOutput {
   const loanAmount = property.purchasePrice - downPayment
   const amortization = generateAmortization(loanAmount, property.interestRate, property.loanTermYears)
 
-  // Depreciation
-  const yearlyDepreciation = annualDepreciation(property.afterRepairValue, tax.landValuePercent)
+  // Depreciation (per-year, respects 27.5-year schedule)
 
   // Year-by-year
   const yearResults: YearResult[] = []
@@ -44,7 +43,8 @@ export function runFullCalculation(inputs: AllInputs): CalculatorOutput {
     const cf = calcAnnualCashFlow(inputs, year, propVal)
 
     const preTaxCashFlow = cf.noi - mortgage.totalPayment
-    const taxResult = calcTaxBenefit(cf.noi, mortgage.totalInterest, yearlyDepreciation, tax.marginalTaxRate)
+    const yearDepreciation = depreciationForYear(property.afterRepairValue, tax.landValuePercent, year)
+    const taxResult = calcTaxBenefit(cf.noi, mortgage.totalInterest, yearDepreciation, tax.marginalTaxRate)
     const afterTaxCashFlow = preTaxCashFlow + taxResult.taxBenefit
 
     cumulativeCashFlow += afterTaxCashFlow
@@ -77,7 +77,7 @@ export function runFullCalculation(inputs: AllInputs): CalculatorOutput {
       noi: cf.noi,
       mortgagePayment: mortgage.totalPayment,
       preTaxCashFlow,
-      depreciation: yearlyDepreciation,
+      depreciation: yearDepreciation,
       taxableIncome: taxResult.taxableIncome,
       taxBenefit: taxResult.taxBenefit,
       afterTaxCashFlow,

@@ -64,7 +64,7 @@ export function runMonteCarloSimulation(params: MonteCarloWorkerInputs): MonteCa
   const totalInvested = downPayment + closingCosts + repairCosts
   const loanAmount = purchasePrice - downPayment
   const monthlyPayment = calcMonthlyPayment(loanAmount, interestRate, loanTermYears)
-  const yearlyDepreciation = afterRepairValue * (1 - landValuePercent / 100) / 27.5
+  const fullDepreciation = afterRepairValue * (1 - landValuePercent / 100) / 27.5
   const annualMortgage = monthlyPayment * 12
 
   // Pre-compute amortization balances and interest splits per year
@@ -145,8 +145,10 @@ export function runMonteCarloSimulation(params: MonteCarloWorkerInputs): MonteCa
       const noi = effectiveIncome - totalExp
       const preTaxCF = noi - annualMortgage
 
-      // Tax benefit
-      const taxableIncome = noi - (annualInterests[y] ?? 0) - yearlyDepreciation
+      // Tax benefit (depreciation stops after 27.5 years)
+      const yearNum = y + 1
+      const depr = yearNum <= 27 ? fullDepreciation : yearNum === 28 ? fullDepreciation * 0.5 : 0
+      const taxableIncome = noi - (annualInterests[y] ?? 0) - depr
       const taxBenefit = taxableIncome < 0
         ? Math.abs(taxableIncome) * (marginalTaxRate / 100)
         : -(taxableIncome * (marginalTaxRate / 100))
@@ -170,7 +172,7 @@ export function runMonteCarloSimulation(params: MonteCarloWorkerInputs): MonteCa
     const finalPropValue = propValue
     const finalLoanBal = balances[holdingPeriodYears - 1] ?? 0
     const sellCosts = finalPropValue * (sellingCostsPercent / 100)
-    const totalDepr = yearlyDepreciation * holdingPeriodYears
+    const totalDepr = fullDepreciation * Math.min(holdingPeriodYears, 27.5)
     const costBasis = purchasePrice + repairCosts - totalDepr
     const capGain = Math.max(0, finalPropValue - sellCosts - costBasis)
     const recapture = Math.min(totalDepr, capGain) * (depreciationRecaptureRate / 100)
