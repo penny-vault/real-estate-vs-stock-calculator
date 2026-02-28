@@ -10,11 +10,6 @@ export function useMonteCarlo(inputs: AllInputs) {
   let debounceTimer: ReturnType<typeof setTimeout> | null = null
 
   function run() {
-    if (!inputs.monteCarlo.enabled) {
-      result.value = null
-      return
-    }
-
     loading.value = true
 
     const workerInputs: MonteCarloWorkerInputs = {
@@ -70,15 +65,10 @@ export function useMonteCarlo(inputs: AllInputs) {
   watch(
     () => JSON.stringify(inputs),
     () => {
-      if (!inputs.monteCarlo.enabled) {
-        result.value = null
-        loading.value = false
-        return
-      }
       if (debounceTimer) clearTimeout(debounceTimer)
       debounceTimer = setTimeout(run, 500)
     },
-    { deep: true },
+    { deep: true, immediate: true },
   )
 
   return {

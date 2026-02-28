@@ -83,8 +83,7 @@ defineProps<{
     <SensitivityHeatmap :inputs="inputs" />
 
     <!-- Monte Carlo -->
-    <template v-if="inputs.monteCarlo.enabled">
-      <ChartContainer title="Monte Carlo Simulation">
+    <ChartContainer title="Monte Carlo Simulation">
         <div v-if="monteCarloLoading" class="flex items-center justify-center h-72">
           <div class="flex items-center gap-2 text-text-muted text-[12px]">
             <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
@@ -95,8 +94,7 @@ defineProps<{
           </div>
         </div>
         <MonteCarloChart v-else-if="monteCarloResult" :result="monteCarloResult" />
-      </ChartContainer>
-    </template>
+    </ChartContainer>
 
     <YearByYearTable :year-results="output.yearResults">
       <template #header-actions>

@@ -43,7 +43,6 @@ export const DEFAULT_INPUTS: AllInputs = {
   },
   holdingPeriodYears: 10,
   monteCarlo: {
-    enabled: false,
     simulationCount: 5000,
     rentGrowthStdDev: 2,
     appreciationStdDev: 3,

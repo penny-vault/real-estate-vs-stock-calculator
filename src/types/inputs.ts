@@ -45,7 +45,6 @@ export interface IndexFundInputs {
 }
 
 export interface MonteCarloInputs {
-  enabled: boolean
   simulationCount: number
   rentGrowthStdDev: number
   appreciationStdDev: number
